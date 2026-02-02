@@ -1,0 +1,20 @@
+# настраивает HTTP-доступ извне через Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  annotations:
+    # Пример аннотации для nginx-ingress controller
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: example.com  # домен, по которому будет доступен сервис
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
