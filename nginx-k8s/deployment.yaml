@@ -1,0 +1,43 @@
+# управляет подами nginx
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2 # Запуск 2 реплик для отказоустойчивости
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        # Liveness probe — проверяет, жив ли контейнер
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        # Readiness probe — проверяет, готов ли контейнер принимать трафик
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        # Startup probe — дает контейнеру больше времени на запуск 
+        startupProbe:
+          httpGet:
+            path: /
+            port: 80
+          failureThreshold: 30
+          periodSeconds: 5
