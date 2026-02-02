@@ -1,0 +1,15 @@
+# предоставляет сетевой доступ к подам nginx
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80 # порт сервиса
+      targetPort: 80 # порт контейнера
+  type: ClusterIP # внутренний доступ в кластере
