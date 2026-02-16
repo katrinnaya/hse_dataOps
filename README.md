@@ -1,2 +1,2 @@
-# hse_dataOps
-HW DataOps
+# ДЗ по теме 15: Создание Helm чарта
+
