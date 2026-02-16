@@ -1,0 +1,22 @@
+# Настройки образа п.2
+image:
+  repository: nginx
+  tag: "1.21"  # Версию можно менять здесь
+
+# Настройки ресурсов п.3
+resources:
+  enabled: true # Если false, блок resources не добавится в манифест
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+
+# Настройки Ingress п.4
+ingress:
+  enabled: true # Если false, манифест Ingress не создастся
+  host: example.com
+
+# Кол-во реплик
+replicaCount: 2
