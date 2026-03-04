@@ -4,7 +4,7 @@
 - `docker-compose.yaml` - конфигурация PostgreSQL
 - `Makefile` - команды для управления миграциями
 - `requirements.txt` - зависимости Python
-- `.env.` - переменные окружения
+- `.env` - переменные окружения
 - `migrations/` - файлы миграций базы данных
 
 ## Миграции:
@@ -20,7 +20,7 @@ make db.migration.new name="users: create table"
 ```bash
 make db.migration.new name="add lastname to users"
 ```
-3. Создание виртуального коружения и установка зависимостей
+3. Создание виртуального окружения и установка зависимостей
 ```bash
 make dev.install
 source venv/bin/activate 
