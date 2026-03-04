@@ -47,4 +47,42 @@ make db.psql
 SELECT * FROM users;
 \d users
 \q
+
+$ make db.psql
+Подключение к PostgreSQL...
+docker exec -it postgres_db psql -U myuser -d mydatabase
+psql (17.2)
+Type "help" for help.
+
+mydatabase=# \dt
+              List of relations
+ Schema |      Name      | Type  |  Owner   
+--------+----------------+-------+----------
+ public | users          | table | myuser
+ public | yoyo_migration | table | myuser
+ public | yoyo_lock      | table | myuser
+(3 rows)
+
+mydatabase=# \d users
+                                            Table "public.users"
+   Column   |            Type             | Collation | Nullable |              Default               
+------------+-----------------------------+-----------+----------+------------------------------------
+ id         | integer                     |           | not null | nextval('users_id_seq'::regclass)
+ username   | character varying(100)      |           | not null | 
+ email      | character varying(255)      |           | not null | 
+ first_name | character varying(100)      |           |          | 
+ last_name  | character varying(100)      |           |          | 
+ created_at | timestamp with time zone    |           |          | CURRENT_TIMESTAMP
+ updated_at | timestamp with time zone    |           |          | CURRENT_TIMESTAMP
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+    "users_email_key" UNIQUE CONSTRAINT, btree (email)
+    "users_username_key" UNIQUE CONSTRAINT, btree (username)
+
+mydatabase=# SELECT * FROM users;
+ id | username | email | first_name | last_name | created_at | updated_at 
+----+----------+-------+------------+-----------+------------+------------
+(0 rows)
+
+mydatabase=# \q
 ```
