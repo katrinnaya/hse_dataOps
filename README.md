@@ -10,3 +10,41 @@
 ## Миграции:
 1. `20240301_01_create_users_table.py` - создание таблицы users
 2. `20240301_02_add_lastname_to_users.py` - добавление поля last_name
+
+## Шаги выполнения:
+1. Создание первой миграции (таблица users)
+```bash
+make db.migration.new name="users: create table"
+```
+2. Создание второй миграции (добавление поля lastname)
+```bash
+make db.migration.new name="add lastname to users"
+```
+3. Создание виртуального коружения и установка зависимостей
+```bash
+make dev.install
+source venv/bin/activate 
+```
+4. Запуск PostgreSQL в Docker
+```bash
+make db.up
+```
+5. Миграции
+```bash
+make db.migrate
+```
+6. Проверка статуса
+```bash
+make db.status
+```
+7. Проверка результатов
+```bash
+# Подключиться к БД через psql
+make db.psql
+
+# Внутри psql выполнять:
+\dt
+SELECT * FROM users;
+\d users
+\q
+```
