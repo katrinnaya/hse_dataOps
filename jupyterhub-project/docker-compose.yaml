@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  jupyterhub:
+    build: .
+    container_name: ${JUPYTERHUB_CONTAINER_NAME}
+    ports:
+      - "${JUPYTERHUB_PORT}:${JUPYTERHUB_PORT}"
+    environment:
+      - JUPYTERHUB_HOST=${JUPYTERHUB_HOST}
+      - JUPYTERHUB_PORT=${JUPYTERHUB_PORT}
+      - JUPYTERHUB_ADMIN=${JUPYTERHUB_ADMIN}
+      - JUPYTERHUB_ADMIN_PASSWORD=${JUPYTERHUB_ADMIN_PASSWORD}
+      - JUPYTERHUB_COOKIE_SECRET=${JUPYTERHUB_COOKIE_SECRET}
+      - JUPYTERHUB_PROXY_AUTH_TOKEN=${JUPYTERHUB_PROXY_AUTH_TOKEN}
+    volumes:
+      - jupyterhub_data:/srv/jupyterhub/data
+      - ./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
+    restart: unless-stopped
+    networks:
+      - jupyter_network
+
+volumes:
+  jupyterhub_data:
+
+networks:
+  jupyter_network:
+    driver: bridge
