@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+poetry.lock
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
