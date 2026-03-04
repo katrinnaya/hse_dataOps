@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+.venv/
+poetry.lock
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.pid.lock
+jupyterhub.sqlite
+jupyterhub_cookie_secret
+jupyterhub_proxy_auth_token
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
