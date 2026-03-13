@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# MLflow
+mlflow_artifacts/
+mlruns/
+
+# Docker
+*.log
+*.pid
+*.seed
+*.pid.lock
