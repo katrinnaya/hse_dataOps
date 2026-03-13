@@ -1,2 +1,1 @@
-# hse_dataOps
-HW DataOps
+# ДЗ по теме 20: mlflow сервер
