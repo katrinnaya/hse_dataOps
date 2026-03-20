@@ -1,2 +1,1 @@
-# hse_dataOps
-HW DataOps
+# Итоговое домашнее задание
