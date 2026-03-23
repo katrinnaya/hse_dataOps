@@ -291,3 +291,29 @@ my-ml-service-6d4f5b7c9-q9w8      1/1     Running   0          30s
 
 ## Этап 9. Работа с Prompt Storage MLflow
 **Цель:** Создание версий промптов в MLflow.
+## Шаги 
+### 1. Перейти в директорию prompts
+```cd prompts```
+### 2. Установить зависимости
+```pip install mlflow```
+### 3. Запустить скрипт
+```python log_prompts.py```
+### 4. Проверить в интерфейсе MLflow
+```http://localhost:5000```
+
+## Логи
+```bash
+katrinnaya@192 dataops-final % cd prompts
+katrinnaya@192 prompts % pip install mlflow
+Successfully installed mlflow-2.10.0
+katrinnaya@192 prompts % python log_prompts.py
+2026/03/20 19:00:00 INFO mlflow.tracking.fluent: Experiment with name 'prompt-experiments' created.
+2026/03/20 19:00:01 INFO mlflow.prompts: Prompt 'summarization_prompt' logged.
+2026/03/20 19:00:02 INFO mlflow.prompts: Prompt 'summarization_prompt_v2' logged.
+2026/03/20 19:00:03 INFO mlflow.prompts: Prompt 'summarization_prompt_v3' logged.
+Prompts successfully logged to MLflow!
+katrinnaya@192 prompts % curl http://localhost:5000/api/2.0/mlflow/prompts/search \
+  -H "Content-Type: application/json" \
+  -d '{"filter": ""}'
+{"prompts": [{"name": "summarization_prompt"}, {"name": "summarization_prompt_v2"}, {"name": "summarization_prompt_v3"}]}
+```
