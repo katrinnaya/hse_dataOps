@@ -119,4 +119,30 @@ katrinnaya@192 lakefs % curl -X POST http://localhost:8000/api/v1/repositories/d
 
 ### Этап 4. Развертывание JupyterHub
 **Цель:** Организация среды разработки.
+## Шаги 
+### 1. Перейти в директорию jupyterhub
+```cd jupyterhub```
+### 2. Собрать и запустить
+```docker compose up --build -d```
+### 3. Проверить статус
+```docker compose ps```
+### 4. Проверить доступность
+```curl -I http://localhost:8000```
+### 5. Открыть веб-интерфейс
+```http://localhost:8000```
 
+## Логи
+```bash
+katrinnaya@192 dataops-final % cd jupyterhub
+katrinnaya@192 jupyterhub % docker compose up --build -d
+[+] Building 5.2s (6/6) FINISHED
+[+] Running 2/2
+ ✔ Container jupyterhub-jupyterhub-1 Started
+katrinnaya@192 jupyterhub % curl -I http://localhost:8000
+HTTP/1.1 302 Found
+Location: /hub/login
+katrinnaya@192 jupyterhub % docker compose logs jupyterhub | tail -20
+[I 2026-03-20 14:00:00.000 JupyterHub app:3000] JupyterHub is now running at http://0.0.0.0:8000
+```
+### Этап 5. Развертывание ML-сервиса
+**Цель:** Создание API сервиса на FastAPI с логированием.
