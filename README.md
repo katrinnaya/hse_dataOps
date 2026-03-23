@@ -215,3 +215,38 @@ katrinnaya@192 ml_service % curl -u admin:admin http://localhost:3000/api/health
 
 ## Этап 7. Подготовка к Kubernetes
 **Цель:** Создание манифестов K8s.
+## Шаги 
+### 1. Перейти в директорию k8s
+```cd k8s```
+### 2. Применить манифесты
+```kubectl apply -f deployment.yaml```
+```kubectl apply -f service.yaml```
+```kubectl apply -f ingress.yaml```
+### 3. Проверить статус
+```kubectl get pods```
+```kubectl get services```
+```kubectl get ingress```
+### 4. Проверить логи
+```kubectl logs -l app=ml-service```
+
+## Логи
+```bash
+katrinnaya@192 dataops-final % cd k8s
+katrinnaya@192 k8s % kubectl apply -f .
+deployment.apps/ml-service created
+service/ml-service created
+ingress.networking.k8s.io/ml-ingress created
+katrinnaya@192 k8s % kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+ml-service-6d4f5b7c9-x2z1     1/1     Running   0          10s
+ml-service-6d4f5b7c9-q9w8     1/1     Running   0          10s
+katrinnaya@192 k8s % kubectl get services
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+ml-service   ClusterIP   10.96.45.123   <none>        80/TCP    15s
+katrinnaya@192 k8s % kubectl get ingress
+NAME         CLASS   HOSTS              ADDRESS   PORTS   AGE
+ml-ingress   nginx   ml-service.local   <none>    80      20s
+```
+
+## Этап 8. Упаковка сервиса в Helm
+**Цель:** Создание Helm чарта.
