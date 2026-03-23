@@ -250,3 +250,41 @@ ml-ingress   nginx   ml-service.local   <none>    80      20s
 
 ## Этап 8. Упаковка сервиса в Helm
 **Цель:** Создание Helm чарта.
+## Шаги 
+### 1. Перейти в директорию helm-chart
+```cd helm-chart```
+### 2. Проверить чарт
+```helm lint .```
+### 3. Установить чарт
+```helm install my-ml-service .```
+### 4. Проверить статус
+```helm list```
+### 5. Проверить ресурсы
+```kubectl get pods```
+```kubectl get services```
+### 6. Обновить версию образа
+```helm upgrade my-ml-service . --set image.tag=v1.1.0```
+### 7. Удалить релиз
+```helm uninstall my-ml-service```
+
+## Логи
+```bash
+katrinnaya@192 dataops-final % cd helm-chart
+katrinnaya@192 helm-chart % helm lint .
+==> Linting .
+[INFO] Chart.yaml: icon is recommended
+1 chart(s) linted, 0 chart(s) failed
+katrinnaya@192 helm-chart % helm install my-ml-service .
+NAME: my-ml-service
+LAST DEPLOYED: Fri Mar 20 18:00:00 2026
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+katrinnaya@192 helm-chart % helm list
+NAME            NAMESPACE       STATUS          REVISION
+my-ml-service   default         deployed        1
+katrinnaya@192 helm-chart % kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+my-ml-service-6d4f5b7c9-x2z1      1/1     Running   0          30s
+my-ml-service-6d4f5b7c9-q9w8      1/1     Running   0          30s
+```
