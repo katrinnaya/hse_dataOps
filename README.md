@@ -317,3 +317,19 @@ katrinnaya@192 prompts % curl http://localhost:5000/api/2.0/mlflow/prompts/searc
   -d '{"filter": ""}'
 {"prompts": [{"name": "summarization_prompt"}, {"name": "summarization_prompt_v2"}, {"name": "summarization_prompt_v3"}]}
 ```
+
+## Ссылки для проверки
+
+| Сервис | URL | Логин / Пароль | Описание |
+|--------|-----|----------------|----------|
+| **MLflow** | `http://localhost:5000` | — | Tracking server для экспериментов и артефактов |
+| **Airflow** | `http://localhost:8080` | `admin` / `admin` | Веб-интерфейс оркестрации пайплайнов |
+| **LakeFS** | `http://localhost:8000` | `minio_admin` / `minio_password` | Версионирование данных, управление репозиториями |
+| **MinIO Console** | `http://localhost:9001` | `minio_admin` / `minio_password` | S3-совместимое хранилище для артефактов |
+| **JupyterHub** | `http://localhost:8000` | `admin` / `admin` | Среда разработки с JupyterLab |
+| **ML Service API** | `http://localhost:8000` | — | FastAPI endpoint `/api/v1/predict` |
+| **Prometheus** | `http://localhost:9090` | — | Сбор и хранение метрик |
+| **Grafana** | `http://localhost:3000` | `admin` / `admin` | Визуализация метрик и дашборды |
+
+> **Инфо:** Все сервисы запущены локально через Docker Compose.
+
