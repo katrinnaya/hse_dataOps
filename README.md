@@ -288,3 +288,6 @@ NAME                              READY   STATUS    RESTARTS   AGE
 my-ml-service-6d4f5b7c9-x2z1      1/1     Running   0          30s
 my-ml-service-6d4f5b7c9-q9w8      1/1     Running   0          30s
 ```
+
+## Этап 9. Работа с Prompt Storage MLflow
+**Цель:** Создание версий промптов в MLflow.
