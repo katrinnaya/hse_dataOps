@@ -32,5 +32,6 @@ mlflow-mlflow_server-1   mlflow-mlflow  "mlflow server --hos…"   mlflow_server
 katrinnaya@192 mlflow % curl http://localhost:5000/health
 {"status": "OK"}
 ```
-
+### Этап 2. Развертывание Airflow
+**Цель:** Развернуть Airflow для оркестрации пайплайнов.
 
