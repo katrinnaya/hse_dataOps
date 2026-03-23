@@ -71,3 +71,6 @@ Admin user admin created
 katrinnaya@192 airflow % curl -I http://localhost:8080
 HTTP/1.1 200 OK
 ```
+
+### Этап 3. Развертывание LakeFS
+**Цель:** Версионирование данных с использованием LakeFS и MinIO.
