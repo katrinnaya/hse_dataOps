@@ -26,5 +26,4 @@ katrinnaya@192 ml_service % curl http://localhost:9090/api/v1/targets
 {"status":"success","data":{"activeTargets":[{"health":"up","labels":{"job":"ml_service"}}]}}
 katrinnaya@192 ml_service % curl -u admin:admin http://localhost:3000/api/health
 {"commit":"abc123","database":"ok","version":"10.0.0"}
-# 20.03.2026 16:00:00 MSK - Мониторинг успешно настроен
 ```
