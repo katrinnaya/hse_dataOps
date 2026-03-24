@@ -1,2 +1,1 @@
-# hse_dataOps
-HW DataOps
+# Домашнее задание по теме: Airflow в k8s
